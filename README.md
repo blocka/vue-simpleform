@@ -112,6 +112,15 @@ It can also take an element or a custom component
 ```
 The custom component will have `value` and `class` (with the erroClass) injected as a props, and `input` and `blur` as listeners. So the custom component has to `$emit` `input` with the new value, and `blur`.
 
+3. `<Error>`
+
+```html
+<Error name="email" class="error-label" tag="span">
+```
+
+Displays an error if the given field is touched and has an error to show.
+By defaul will use a div, but the `tag` prop can be used to use a different element.
+
 ## License
 
 MIT

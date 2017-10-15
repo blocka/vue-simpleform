@@ -1,0 +1,74 @@
+{
+  "name": "vue-simpleform",
+  "version": "1.0.1",
+  "author": "Avi Block <atblock@gmail.com>",
+  "private": false,
+  "description": "Form library for vue. Inspired by Formik",
+  "keywords": [
+    "component",
+    "Vue.js",
+    "forms"
+  ],
+  "license": "MIT",
+  "main": "dist/vue-simpleform.cjs.js",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/blocka/vue-simpleform",
+  "bugs": "https://github.com/blocka/vue-simpleform/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blocka/vue-simpleform.git"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run release",
+    "clean": "rm -rf dist .tmp",
+    "build": "run-p build:cjs build:dev build:prod",
+    "build:cjs": "rollup -c scripts/rollup.config.js --environment BUILD:cjs",
+    "build:dev": "rollup -c scripts/rollup.config.js --environment BUILD:dev",
+    "build:prod": "rollup -c scripts/rollup.config.js --environment BUILD:prod | uglifyjs -mc warnings=false --comments -o dist/vue-simpleform.min.js",
+    "build:test": "cross-env NODE_ENV=test webpack --config scripts/webpack.config.unit.js",
+    "watch:test": "cross-env NODE_ENV=test webpack -w --config scripts/webpack.config.unit.js",
+    "lint": "eslint --fix \"@(src|test|scripts)/**/*.js\"",
+    "testem": "testem",
+    "testem:ci": "testem ci --launch PhantomJS",
+    "test": "npm run test:unit",
+    "test:unit": "run-s build:test testem:ci",
+    "test:dev": "run-p watch:test testem",
+    "release": "run-s lint clean build"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.0.0",
+    "eslint-config-ktsn": "^1.0.2",
+    "eslint-plugin-html": "^3.0.0",
+    "glob": "^7.1.2",
+    "npm-run-all": "^4.0.2",
+    "power-assert": "^1.4.4",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-vue": "^2.4.0",
+    "testem": "^1.16.2",
+    "uglify-js": "^3.0.15",
+    "vue": "^2.3.4",
+    "vue-loader": "^12.2.1",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "flatulence": "^0.2.13",
+    "lodash": "^4.17.4"
+  }
+}

@@ -42,9 +42,9 @@ export default {
       } else {
         $vnode.data = merge($vnode.data, {
           domProps: {
-            name: this.name
+            name: this.name,
+            value: values[this.name]
           },
-          value: values[this.name],
           on: {
             input: e => setValue(this.name, e.target.value),
             blur: () => setTouched(this.name)
@@ -60,7 +60,8 @@ export default {
 
     return h('input', {
       domProps: {
-        name: this.name
+        name: this.name,
+        value: values[this.name]
       },
       class: {
         [this.errorClass]: touched(this.name) && errors(this.name)

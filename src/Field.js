@@ -58,8 +58,6 @@ export default {
       return $vnode
     }
 
-    // return h(...getVNodeForType(this.simpleForm, this.type, this.name, this.errorClass))
-
     return h('input', {
       domProps: {
         name: this.name

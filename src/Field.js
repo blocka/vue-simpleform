@@ -1,4 +1,5 @@
 import merge from 'lodash/merge'
+import get from 'lodash/get'
 
 export default {
   name: 'SimpleFormField',
@@ -16,6 +17,8 @@ export default {
   render (h) {
     const { values, errors, touched, input, blur, setValue, setTouched } = this.simpleForm
 
+    const value = get(values, this.name)
+
     if (this.$slots.default) {
       if (this.$slots.default.length > 1) {
         // eslint-disable-next-line
@@ -32,7 +35,7 @@ export default {
               blur: () => setTouched(this.name)
             },
             propsData: {
-              value: values[this.name],
+              value,
               class: {
                 [this.errorClass]: errors(this.name) & touched(this.name)
               }
@@ -43,7 +46,7 @@ export default {
         $vnode.data = merge($vnode.data, {
           domProps: {
             name: this.name,
-            value: values[this.name]
+            value
           },
           on: {
             input: e => setValue(this.name, e.target.value),
@@ -61,7 +64,7 @@ export default {
     return h('input', {
       domProps: {
         name: this.name,
-        value: values[this.name]
+        value
       },
       class: {
         [this.errorClass]: touched(this.name) && errors(this.name)

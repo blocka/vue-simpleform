@@ -37,7 +37,7 @@ export default {
             propsData: {
               value,
               class: {
-                [this.errorClass]: errors(this.name) & touched(this.name)
+                [this.errorClass]: errors(this.name) && touched(this.name)
               }
             }
           }
@@ -53,7 +53,7 @@ export default {
             blur: () => setTouched(this.name)
           },
           class: {
-            [this.errorClass]: errors(this.name) & touched(this.name)
+            [this.errorClass]: errors(this.name) && touched(this.name)
           }
         })
       }

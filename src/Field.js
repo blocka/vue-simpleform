@@ -64,7 +64,8 @@ export default {
     return h('input', {
       domProps: {
         name: this.name,
-        value
+        value,
+        checked: !!value
       },
       class: {
         [this.errorClass]: touched(this.name) && errors(this.name)

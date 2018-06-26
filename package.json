@@ -1,6 +1,6 @@
 {
   "name": "vue-simpleform",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Avi Block <atblock@gmail.com>",
   "private": false,
   "description": "Form library for vue. Inspired by Formik",

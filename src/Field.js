@@ -43,7 +43,7 @@ export default {
           }
         })
       } else {
-        $vnode.data = merge($vnode.data, {
+        const data = merge($vnode.data, {
           domProps: {
             name: this.name,
             value
@@ -56,9 +56,10 @@ export default {
             [this.errorClass]: errors(this.name) && touched(this.name)
           }
         })
-      }
 
-      return $vnode
+        return h($vnode.tag, data, $vnode.children)
+
+      }
     }
 
     return h('input', {

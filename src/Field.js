@@ -42,6 +42,8 @@ export default {
             }
           }
         })
+
+        return $vnode;
       } else {
         const data = merge($vnode.data, {
           domProps: {

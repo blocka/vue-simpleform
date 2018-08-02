@@ -28,22 +28,23 @@ export default {
       const $vnode = this.$slots.default[0]
 
       if ($vnode.componentOptions) {
-        merge($vnode, {
-          componentOptions: {
-            listeners: {
-              input: val => setValue(this.name, val),
-              blur: () => setTouched(this.name)
-            },
-            propsData: {
-              value,
-              class: {
-                [this.errorClass]: errors(this.name) && touched(this.name)
-              }
-            }
-          }
-        })
-
-        return $vnode;
+       return h($vnode.componentOptions.Ctor, {
+         ...$vnode.data,
+         on: {
+           ...($vnode.data.on || {}),
+           input: val => setValue(this.name, val),
+           blur: () => setTouched(this.name)
+         },
+         class: {
+           ...($vnode.data.class || {}),
+           [this.errorClass]: errors(this.name) && touched(this.name)
+         },
+         props: {
+           ...($vnode.data.props || {}),
+           value
+           }
+         }
+       , $vnode.children)
       } else {
         const data = merge($vnode.data, {
           domProps: {

@@ -44,7 +44,7 @@ export default {
            value
            }
          }
-       , $vnode.children)
+       , $vnode.children || $vnode.componentOptions.children)
       } else {
         const data = merge($vnode.data, {
           domProps: {

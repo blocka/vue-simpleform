@@ -41,6 +41,7 @@ export default {
          },
          props: {
            ...($vnode.data.props || {}),
+           ...($vnode.componentOptions.propsData || {}),
            value
            }
          }

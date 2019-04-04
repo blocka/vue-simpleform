@@ -31,7 +31,7 @@ export default {
        return h($vnode.componentOptions.Ctor, {
          ...$vnode.data,
          on: {
-           ...($vnode.data.on || {}),
+           ...($vnode.componentOptions.listeners || {}),
            input: val => setValue(this.name, val),
            blur: () => setTouched(this.name)
          },

@@ -54,6 +54,7 @@ export default {
           },
           on: {
             input: e => setValue(this.name, e.target.value),
+            change: e => setValue(this.name, e.target.value),
             blur: () => setTouched(this.name)
           },
           class: {

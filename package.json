@@ -69,6 +69,6 @@
   },
   "dependencies": {
     "flatulence": "^0.2.13",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.11"
   }
 }

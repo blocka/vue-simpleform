@@ -2,6 +2,7 @@
 
 import omit from 'lodash/omit'
 import set from 'lodash/set'
+import get from 'lodash/get';
 import { flatten } from 'flatulence'
 
 function eventOrValue (e) {
@@ -42,7 +43,7 @@ export default {
       simpleForm: {
         values: this.values,
         setValue: (field, value) => this.setValues({ [field]: value }),
-        errors: (field) => this.errors && this.errors[field],
+        errors: (field) => this.errors && get(this.errors, field),
         touched: (field) => this.touched[field],
         setTouched: this.setTouched,
         input: this.handleInput,

@@ -32,7 +32,8 @@ export default {
       errors: {},
       touched: {},
       submitted: false,
-      submitting: false
+      submitting: false,
+      scrolledToFirstError: { value: false }
     }
   },
   async created () {
@@ -47,7 +48,8 @@ export default {
         touched: (field) => this.touched[field],
         setTouched: this.setTouched,
         input: this.handleInput,
-        blur: this.handleBlur
+        blur: this.handleBlur,
+        scrolledToFirstError: this.scrolledToFirstError
       }
     }
   },
@@ -79,6 +81,8 @@ export default {
       this.touched = omit(this.touched, field)
     },
     async handleSubmit () {
+      this.scrolledToFirstError.value = false
+
       const errors = await this.validate(this.values)
 
       if (errors && Object.keys(errors).length > 0) {

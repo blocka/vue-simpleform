@@ -2,8 +2,8 @@ import merge from 'lodash/merge'
 import get from 'lodash/get'
 
 export default {
-  name: 'SimpleFormField',
-  inject: ['simpleForm'],
+  name: "SimpleFormField",
+  inject: ["simpleForm"],
   props: {
     name: {
       type: String,

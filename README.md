@@ -49,7 +49,7 @@ I think it is, but really I couldn't think of a better name
 The main component takes two props: 
 
 1. `value`. This is used to set the initial form state, which will be a deep copy of what is passed in. 
-2. `validate`. This is a function which is called to validate the form. This happens when any of the fields are updated, or the form is submitted. It can return a promise to do asynchronous validation
+2. `validate`. This is a function which is called to validate the form. This happens when any of the fields are updated, or the form is submitted. ~It can return a promise to do asynchronous validation~ as of 1.0.0 it only works synchronously
 
 And `$emits` a `submit` event when the form is submitted. The callback for the submit event takes an object with following keys:
 

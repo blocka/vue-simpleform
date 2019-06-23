@@ -36,9 +36,6 @@ export default {
       scrolledToFirstError: { value: false }
     }
   },
-  async created () {
-    this.errors = await this.validate(this.values)
-  },
   provide () {
     return {
       simpleForm: {
@@ -53,13 +50,16 @@ export default {
       }
     }
   },
+  computed: {
+    errors () {
+      return this.validate(this.values)
+    }
+  },
   methods: {
     async setValues (values) {
       Object.entries(values).forEach(([key, val]) => {
         set(this.values, key, val)
       })
-
-      this.errors = await this.validate(this.values)
     },
     handleInput (e) {
       this.setValues({ [e.target.name]: eventOrValue(e) })
@@ -80,14 +80,10 @@ export default {
     untouch (field) {
       this.touched = omit(this.touched, field)
     },
-    async handleSubmit () {
+    handleSubmit () {
       this.scrolledToFirstError.value = false
 
-      const errors = await this.validate(this.values)
-
-      if (errors && Object.keys(errors).length > 0) {
-        this.errors = errors
-
+      if (this.errors && Object.keys(this.errors).length > 0) {
         this.$emit('submit', { values: null, errors: this.errors })
 
         return

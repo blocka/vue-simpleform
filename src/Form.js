@@ -29,7 +29,6 @@ export default {
   data () {
     return {
       values: JSON.parse(JSON.stringify(this.value)),
-      errors: {},
       touched: {},
       submitted: false,
       submitting: false,
@@ -56,7 +55,7 @@ export default {
     }
   },
   methods: {
-    async setValues (values) {
+    setValues (values) {
       Object.entries(values).forEach(([key, val]) => {
         set(this.values, key, val)
       })

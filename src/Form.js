@@ -1,7 +1,7 @@
 /* globals Event */
 
 import omit from 'lodash/omit'
-import set from 'lodash/set'
+import { vueSet as set } from 'vue-deepset'
 import get from 'lodash/get';
 import { flatten } from 'flatulence'
 
@@ -33,6 +33,15 @@ export default {
       submitted: false,
       submitting: false,
       scrolledToFirstError: { value: false }
+    }
+  },
+  watch: {
+    values: {
+      deep: true,
+      immediate: true,
+      handler () {
+        this.$emit('value', {values: this.values, setValue: this.setValue})
+      }
     }
   },
   provide () {

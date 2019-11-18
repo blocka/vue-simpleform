@@ -40,7 +40,7 @@ export default {
       deep: true,
       immediate: true,
       handler () {
-        this.$emit('value', {values: this.values, setValue: this.setValue})
+        this.$emit('values', {values: this.values, setValue: this.setValues})
       }
     }
   },

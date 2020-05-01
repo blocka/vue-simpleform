@@ -35,7 +35,9 @@
     "test": "npm run test:unit",
     "test:unit": "run-s build:test testem:ci",
     "test:dev": "run-p watch:test testem",
-    "release": "run-s lint clean build"
+    "release": "run-s lint clean build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -70,6 +72,8 @@
   "dependencies": {
     "flatulence": "^0.2.13",
     "lodash": "^4.17.11",
-    "vue-deepset": "^0.6.3"
-  }
+    "vue-deepset": "^0.6.3",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }

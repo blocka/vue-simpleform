@@ -122,7 +122,7 @@ export default {
       errors: (field) => this.errors && this.errors[field],
       touched: (field) => this.touched[field],
       handleSubmit: () => {
-        this.touched = Object.entries(flatten.keepEmpty(this.values))
+        this.touched = [...Object.entries(flatten.keepEmpty(this.values)),...Object.entries(this.values)]
           .reduce((touched, [key]) => ({ ...touched, [key]: true }), {})
 
         this.handleSubmit()

@@ -60,12 +60,12 @@
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^1.1.1",
-    "rollup-plugin-vue": "^2.4.0",
+    "rollup-plugin-vue": "^6.0.0",
     "testem": "^1.16.2",
     "uglify-js": "^3.0.15",
     "vue": "^2.3.4",
     "vue-loader": "^12.2.1",
-    "webpack": "^2.6.1"
+    "webpack": "^5.75.0"
   },
   "dependencies": {
     "flatulence": "^0.2.13",
